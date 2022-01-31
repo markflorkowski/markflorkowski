@@ -6,4 +6,9 @@ Co-founder at [T3 Tools](https://t3.tools)
 
 Ex Support Engineer at [Retool](https://retool.com)
 
-Slowly figuring out web development. 
+Click-to-copy button expert.
+
+Contrubuted click-to-copy buttons to:
+- [init.tips](https://init.tips)
+- [beta.reactjs.org](https://beta.reactjs.org/learn/start-a-new-react-project#:~:text=Terminal-,Copy,-npx%20create%2Dreact)
+- [ping.t3.gg](https://ping.t3.gg)
