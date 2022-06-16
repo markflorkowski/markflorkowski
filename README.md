@@ -9,6 +9,7 @@ Ex Support Engineer at [Retool](https://retool.com)
 Click-to-copy button expert.
 
 Contributed click-to-copy buttons to:
+
 - [init.tips](https://init.tips)
 - [beta.reactjs.org](https://beta.reactjs.org/learn/start-a-new-react-project#:~:text=Terminal-,Copy,-npx%20create%2Dreact)
 - [ping.gg](https://ping.gg)

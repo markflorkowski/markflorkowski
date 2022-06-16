@@ -1,0 +1,24 @@
+---
+import * as page from '../../README.md'
+import '../style/global.css'
+
+const title='Mark R. Florkowski'
+const description='Co-founder at Ping Labs. Ex Support Engineer at Retool. Click-to-copy button expert'
+---
+<html lang="en">
+  <head>
+		<link rel="icon" href="/favicon.ico" />
+		<title>{title}</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta name="theme-color" content="#979ca0" />
+  </head>
+  <body>
+		<div class="paper">
+			<page.Content/>
+		</div>
+	</body>
+</html>
