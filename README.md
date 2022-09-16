@@ -14,3 +14,4 @@ Contributed click-to-copy buttons to:
 - [beta.reactjs.org](https://beta.reactjs.org/learn/start-a-new-react-project#:~:text=Terminal-,Copy,-npx%20create%2Dreact)
 - [ping.gg](https://ping.gg)
 - [AutoAnimate](https://auto-animate.formkit.com/)
+- [Astro.build](https://astro.build)
