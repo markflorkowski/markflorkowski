@@ -1,0 +1,27 @@
+---
+import '../style/global.css'
+---
+<html lang="en">
+  <head>
+		<link rel="icon" href="/favicon.ico" />
+		<title>setup.sh</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#979ca0" />
+  </head>
+  <body>
+		<div id="command" class="paper" style="text-align: center">
+			/bin/bash -c "$(curl -fsSL https://mark.florkow.ski/setup.sh)"
+		</div>
+	</body>
+  <script>
+    const command = document.getElementById('command');
+    command.addEventListener('click', async () => {
+      await navigator.clipboard.writeText(command.innerText);
+      command.innerText = 'Copied to clipboard!';
+      setTimeout(() => {
+        command.innerText = '/bin/bash -c "$(curl -fsSL https://mark.florkow.ski/setup.sh)"';
+      }, 1000);
+    });
+  </script>
+</html>
