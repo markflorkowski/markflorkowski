@@ -8,6 +8,9 @@ brew upgrade
 brew install --cask google-chrome visual-studio-code discord karabiner-elements shottr rectangle-pro 1password 1password-cli vlc hpedrorodrigues/tools/dockutil linear-linear
 brew install git fnm gh tmux pnpm
 
+# Install fnm
+curl -fsSL https://fnm.vercel.app/install | bash
+
 # Set up dock icons
 echo "Setting up dock"
 dockutil --remove all --no-restart
@@ -18,7 +21,7 @@ dockutil --add "/Applications/Discord.app" --no-restart
 dockutil --add "/System/Applications/Messages.app" --no-restart
 dockutil --add "/System/Applications/System Settings.app" --no-restart
 
-#Folders to add to the dock
+# Folders to add to the dock
 dockutil --add '/Applications' --view grid --display folder --no-restart
 dockutil --add '~/Documents' --view grid --display folder --no-restart
 dockutil --add '~/Downloads' --view grid --display folder
