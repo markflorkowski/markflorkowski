@@ -54,6 +54,13 @@ git config --global commit.gpgsign true
 # git aliases
 git config --global alias.undo "reset --soft HEAD^"
 
+# set up ssh keys
+echo "Setting up SSH keys"
+mkdir -p ~/.ssh
+op read "op://Private/Github SSH Key/private key" -o ~/.ssh/id_ed25519
+chmod 600 ~/.ssh/id_ed25519
+ssh-add ~/.ssh/id_ed25519
+
 # Set up dock hiding if on a laptop
 if [[ $(sysctl -n hw.model) = *MacBook* ]]; then
   echo "Laptop detected, setting up dock hiding"
@@ -72,9 +79,9 @@ curl -# https://gist.githubusercontent.com/markflorkowski/3774bbbfeccd539c434305
 
 # configure rectangle pro to use icloud sync and launch on login
 echo "Updating RectanglePro config"
-/usr/libexec/PlistBuddy -c 'delete :iCloudSync' /Users/mrf/Library/Preferences/com.knollsoft.Hookshot.plist         
+/usr/libexec/PlistBuddy -c 'delete :iCloudSync' /Users/mrf/Library/Preferences/com.knollsoft.Hookshot.plist
 /usr/libexec/PlistBuddy -c 'add :iCloudSync bool true' /Users/mrf/Library/Preferences/com.knollsoft.Hookshot.plist
-/usr/libexec/PlistBuddy -c 'delete :launchOnLogin' /Users/mrf/Library/Preferences/com.knollsoft.Hookshot.plist         
+/usr/libexec/PlistBuddy -c 'delete :launchOnLogin' /Users/mrf/Library/Preferences/com.knollsoft.Hookshot.plist
 /usr/libexec/PlistBuddy -c 'add :launchOnLogin bool true' /Users/mrf/Library/Preferences/com.knollsoft.Hookshot.plist
 
 echo "Updating macOS settings"
