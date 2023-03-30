@@ -11,7 +11,7 @@ Click-to-copy button expert.
 Contributed click-to-copy buttons to:
 
 - [init.tips](https://init.tips)
-- [beta.reactjs.org](https://beta.reactjs.org/learn/start-a-new-react-project#:~:text=Terminal-,Copy,-npx%20create%2Dreact)
+- ~~[beta.reactjs.org](https://beta.reactjs.org/learn/start-a-new-react-project)~~ [react.dev](https://react.dev/learn/start-a-new-react-project)
 - [ping.gg](https://ping.gg)
 - [AutoAnimate](https://auto-animate.formkit.com/)
 - [Astro.build](https://astro.build)
