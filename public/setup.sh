@@ -8,6 +8,9 @@ brew upgrade
 brew install --cask google-chrome visual-studio-code discord karabiner-elements shottr rectangle-pro 1password 1password-cli vlc hpedrorodrigues/tools/dockutil linear-linear
 brew install git fnm gh tmux pnpm
 
+# enable automatic updates every 12 hours
+brew autoupdate start 43200 --upgrade
+
 # Set up dock icons
 echo "Setting up dock"
 dockutil --remove all --no-restart
