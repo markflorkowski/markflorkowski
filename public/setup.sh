@@ -91,7 +91,12 @@ echo "Updating RectanglePro config"
 echo "Updating macOS settings"
 
 # Disable annoying backswipe in Chrome
+defaults write com.google.Chrome AppleEnableMouseSwipeNavigateWithScrolls -bool false 
 defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
+
+# Disable annoying backswipe in Arc
+defaults write company.thebrowser.Browser AppleEnableMouseSwipeNavigateWithScrolls -bool false 
+defaults write company.thebrowser.Browser AppleEnableSwipeNavigateWithScrolls -bool false
 
 # Avoid the creation of .DS_Store files on network volumes or USB drives
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
