@@ -1,11 +1,15 @@
 # Install brew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+# Enable brew
+(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/mrf/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Install packages and casks with brew
 brew update
 brew upgrade
 
-brew install --cask google-chrome visual-studio-code discord karabiner-elements shottr rectangle-pro 1password 1password-cli vlc hpedrorodrigues/tools/dockutil linear-linear
+brew install --cask arc visual-studio-code discord karabiner-elements shottr rectangle-pro 1password 1password-cli vlc hpedrorodrigues/tools/dockutil linear-linear
 brew install git fnm gh tmux pnpm
 
 # enable automatic updates every 12 hours
