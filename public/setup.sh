@@ -15,6 +15,11 @@ brew install git fnm gh tmux pnpm
 # enable automatic updates every 12 hours
 brew autoupdate start 43200 --upgrade
 
+# Install nvm
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+echo "export NVM_DIR=~/.nvm" >>~/.zshrc
+echo "source ~/.nvm/nvm.sh" >>~/.zshrc
+
 # Set up dock icons
 echo "Setting up dock"
 dockutil --remove all --no-restart
