@@ -9,21 +9,16 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 brew update
 brew upgrade
 
-brew install --cask arc visual-studio-code discord karabiner-elements shottr rectangle-pro 1password 1password-cli vlc hpedrorodrigues/tools/dockutil linear-linear
+brew install --cask arc visual-studio-code discord karabiner-elements shottr rectangle-pro 1password 1password-cli hpedrorodrigues/tools/dockutil linear-linear
 brew install git fnm gh tmux pnpm
 
 # enable automatic updates every 12 hours
 brew autoupdate start 43200 --upgrade
 
-# Install nvm
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
-echo "export NVM_DIR=~/.nvm" >>~/.zshrc
-echo "source ~/.nvm/nvm.sh" >>~/.zshrc
-
 # Set up dock icons
 echo "Setting up dock"
 dockutil --remove all --no-restart
-dockutil --add "/Applications/Google Chrome.app" --no-restart
+dockutil --add "/Applications/Arc.app" --no-restart
 dockutil --add "/Applications/Visual Studio Code.app" --no-restart
 dockutil --add "/System/Applications/Utilities/Terminal.app" --no-restart
 dockutil --add "/Applications/Discord.app" --no-restart
@@ -71,19 +66,25 @@ chmod 600 ~/.ssh/id_ed25519
 ssh-add ~/.ssh/id_ed25519
 
 # Set up dock hiding if on a laptop
-if [[ $(sysctl -n hw.model) = *MacBook* ]]; then
-  echo "Laptop detected, setting up dock hiding"
+dockconfig() {
+  printf "\nLaptop selected, setting up dock hiding."
   defaults write com.apple.dock autohide -bool true
   defaults write com.apple.dock autohide-delay -float 0
   defaults write com.apple.dock autohide-time-modifier -float 0
   killall Dock
-fi
+}
+
+read -n1 -p "[D]esktop or [L]aptop? " systemtype
+case $systemtype in
+d | D) printf "\nDesktop selected, no special dock config." ;;
+l | L) dockconfig ;;
+*) echo INVALID OPTION, SKIPPING ;;
+esac
 
 # add karabiner mappings
 echo "Getting karabiner configs"
 mkdir -p ~/.config/karabiner/
 curl -# https://gist.githubusercontent.com/markflorkowski/bc393361c0222f19ec3131b5686ed080/raw/62aec7067011cdf5e90cf54f252cbfb5a1e49de0/karabiner.json -o ~/.config/karabiner/karabiner.json
-
 curl -# https://gist.githubusercontent.com/markflorkowski/3774bbbfeccd539c4343058e0740367c/raw/7c6e711a9516f83ff48c99e43eef9ca13fb05246/1643178345.json -o ~/.config/karabiner/assets/complex_modifications/1643178345.json
 
 # configure rectangle pro to use icloud sync and launch on login
@@ -94,10 +95,6 @@ echo "Updating RectanglePro config"
 /usr/libexec/PlistBuddy -c 'add :launchOnLogin bool true' /Users/mrf/Library/Preferences/com.knollsoft.Hookshot.plist
 
 echo "Updating macOS settings"
-
-# Disable annoying backswipe in Chrome
-defaults write com.google.Chrome AppleEnableMouseSwipeNavigateWithScrolls -bool false 
-defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
 
 # Disable annoying backswipe in Arc
 defaults write company.thebrowser.Browser AppleEnableMouseSwipeNavigateWithScrolls -bool false 
@@ -129,6 +126,7 @@ killall Finder
 echo "Starting services"
 open "/Applications/Rectangle Pro.app"
 open "/Applications/Karabiner-Elements.app"
+open "/Applications/Shottr.app"
 
 echo "Removing config programs"
 brew remove hpedrorodrigues/tools/dockutil
