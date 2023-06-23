@@ -136,4 +136,11 @@ sh -c "$(curl -# -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/
 
 # zsh aliases
 echo "alias c='open \$1 -a \"Visual Studio Code\"'" >>~/.zshrc
+
+# add ssh-agent plugin
+sed -i -e 's/plugins=(git)/plugins=(git ssh-agent)/' ~/.zshrc
+
+#fnm stuff
+echo "eval \"\$(fnm env --use-on-cd)\"">>~/.zshrc
+
 source ~/.zshrc
