@@ -16,3 +16,4 @@ Contributed click-to-copy buttons to:
 - [AutoAnimate](https://auto-animate.formkit.com/)
 - [Astro.build](https://astro.build)
 - [webhookthing](https://webhookthing.com)
+- [uploadthing](https://uploadthing.com)
