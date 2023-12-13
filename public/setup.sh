@@ -9,7 +9,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 brew update
 brew upgrade
 
-brew install --cask arc visual-studio-code discord karabiner-elements shottr rectangle-pro 1password 1password-cli hpedrorodrigues/tools/dockutil linear-linear
+brew install --cask arc beeper visual-studio-code discord karabiner-elements shottr rectangle-pro 1password 1password-cli hpedrorodrigues/tools/dockutil linear-linear
 brew install git fnm gh tmux pnpm orbstack
 
 # enable automatic updates every 12 hours
