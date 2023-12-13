@@ -10,7 +10,7 @@ brew update
 brew upgrade
 
 brew install --cask arc visual-studio-code discord karabiner-elements shottr rectangle-pro 1password 1password-cli hpedrorodrigues/tools/dockutil linear-linear
-brew install git fnm gh tmux pnpm
+brew install git fnm gh tmux pnpm orbstack
 
 # enable automatic updates every 12 hours
 brew autoupdate start 43200 --upgrade
