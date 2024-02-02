@@ -13,6 +13,7 @@ brew install --cask arc beeper visual-studio-code discord karabiner-elements sho
 brew install git fnm gh tmux pnpm orbstack
 
 # enable automatic updates every 12 hours
+brew tap homebrew/autoupdate
 brew autoupdate start 43200 --upgrade
 
 # Set up dock icons
