@@ -9,8 +9,14 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 brew update
 brew upgrade
 
-brew install --cask arc beeper visual-studio-code discord karabiner-elements shottr rectangle-pro 1password 1password-cli hpedrorodrigues/tools/dockutil linear-linear
-brew install git fnm gh tmux corepack orbstack
+brew install --cask \
+  # Will remain after script completes
+  1password 1password-cli arc discord karabiner-elements mitm-proxy raycast rectangle-pro shottr visual-studio-code \
+  # Only used during script run
+  hpedrorodrigues/tools/dockutil
+  
+brew install \
+  corepack deno fnm gh git httpie iperf3 node plow stripe tfenv tmux
 
 # enable automatic updates every 12 hours
 brew tap homebrew/autoupdate
