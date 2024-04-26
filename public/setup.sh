@@ -1,3 +1,6 @@
+# Get sudo 
+#sudo -v 
+
 # Install brew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
@@ -6,6 +9,7 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Install packages and casks with brew
+echo "Installing programs with homebrew"
 brew update
 brew upgrade
 
@@ -19,8 +23,14 @@ brew install \
   corepack deno fnm gh git httpie iperf3 node plow stripe tfenv tmux
 
 # enable automatic updates every 12 hours
+echo "Enabling autoupdate for homebrew packages..."
 brew tap homebrew/autoupdate
 brew autoupdate start 43200 --upgrade
+
+# hidapitester -- used for controlling logitech litra lights
+curl -L -o hidapitester-macos-arm64.zip https://github.com/todbot/hidapitester/releases/latest/download/hidapitester-macos-arm64.zip \
+  && unzip hidapitester-macos-arm64.zip \
+  && sudo mv hidapitester /usr/local/bin/
 
 # Set up dock icons
 echo "Setting up dock"
