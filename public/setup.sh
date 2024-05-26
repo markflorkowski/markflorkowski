@@ -129,6 +129,7 @@ defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool t
 # Dock tweaks
 defaults write com.apple.dock orientation -string left # Move dock to left side of screen
 defaults write com.apple.dock show-recents -bool FALSE # Disable "Show recent applications in dock"
+defaults write com.apple.Dock showhidden -bool TRUE # Show hidden applications as translucent
 killall Dock
 
 # Finder tweaks
