@@ -15,12 +15,12 @@ brew upgrade
 
 brew install --cask \
   # Will remain after script completes
-  1password 1password-cli arc discord karabiner-elements mitm-proxy raycast rectangle-pro shottr visual-studio-code \
+  1password 1password-cli arc discord karabiner-elements mitm-proxy orbstack raycast rectangle-pro shottr visual-studio-code \
   # Only used during script run
   hpedrorodrigues/tools/dockutil
   
 brew install \
-  corepack deno fnm gh git httpie iperf3 node plow stripe tfenv tmux
+  corepack deno fnm gh git httpie iperf3 node plow stripe tfenv tmux fzf
 
 # enable automatic updates every 12 hours
 echo "Enabling autoupdate for homebrew packages..."
@@ -158,7 +158,11 @@ echo "alias c='open \$1 -a \"Visual Studio Code\"'" >>~/.zshrc
 # add ssh-agent plugin
 sed -i -e 's/plugins=(git)/plugins=(git ssh-agent)/' ~/.zshrc
 
-#fnm stuff
+# fnm stuff
 echo "eval \"\$(fnm env --use-on-cd)\"">>~/.zshrc
+
+# fzf 
+source <(fzf --zsh)
+
 
 source ~/.zshrc
