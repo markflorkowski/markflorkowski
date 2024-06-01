@@ -15,7 +15,7 @@ brew upgrade
 
 brew install --cask \
   # Will remain after script completes
-  1password 1password-cli arc discord karabiner-elements mitm-proxy orbstack raycast rectangle-pro shottr visual-studio-code \
+  1password 1password-cli arc discord karabiner-elements orbstack raycast rectangle-pro shottr visual-studio-code \
   # Only used during script run
   hpedrorodrigues/tools/dockutil
   
