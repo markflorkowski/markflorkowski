@@ -1,11 +1,14 @@
-# Get sudo 
-#sudo -v 
+# Get sudo
+#sudo -v
 
 # Install brew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Enable brew
-(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/mrf/.zprofile
+(
+  echo
+  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"'
+) >>/Users/mrf/.zprofile
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Install packages and casks with brew
@@ -13,14 +16,12 @@ echo "Installing programs with homebrew"
 brew update
 brew upgrade
 
-brew install --cask \
-  # Will remain after script completes
-  1password 1password-cli arc discord karabiner-elements orbstack raycast rectangle-pro shottr visual-studio-code \
-  # Only used during script run
-  hpedrorodrigues/tools/dockutil
-  
-brew install \
-  corepack deno fnm gh git httpie iperf3 node plow stripe tfenv tmux fzf
+brew install --cask 1password 1password-cli arc discord karabiner-elements orbstack raycast rectangle-pro shottr visual-studio-code
+
+brew install corepack deno dockutil fnm gh git httpie iperf3 node plow stripe tfenv tmux fzf
+
+# create LaunchAgents dir
+mkdir -p ~/Library/LaunchAgents
 
 # enable automatic updates every 12 hours
 echo "Enabling autoupdate for homebrew packages..."
@@ -28,9 +29,9 @@ brew tap homebrew/autoupdate
 brew autoupdate start 43200 --upgrade
 
 # hidapitester -- used for controlling logitech litra lights
-curl -L -o hidapitester-macos-arm64.zip https://github.com/todbot/hidapitester/releases/latest/download/hidapitester-macos-arm64.zip \
-  && unzip hidapitester-macos-arm64.zip \
-  && sudo mv hidapitester /usr/local/bin/
+curl -L -o hidapitester-macos-arm64.zip https://github.com/todbot/hidapitester/releases/latest/download/hidapitester-macos-arm64.zip &&
+  unzip hidapitester-macos-arm64.zip &&
+  sudo mv hidapitester /usr/local/bin/
 
 # Set up dock icons
 echo "Setting up dock"
@@ -40,12 +41,14 @@ dockutil --add "/Applications/Visual Studio Code.app" --no-restart
 dockutil --add "/System/Applications/Utilities/Terminal.app" --no-restart
 dockutil --add "/Applications/Discord.app" --no-restart
 dockutil --add "/System/Applications/Messages.app" --no-restart
+dockutil --add "/System/Applications/Notes.app" --no-restart
+dockutil --add "/System/Applications/Utilities/Activity Monitor.app" --no-restart
 dockutil --add "/System/Applications/System Settings.app" --no-restart
 
 # Folders to add to the dock
 dockutil --add '/Applications' --view grid --display folder --no-restart
-dockutil --add '~/Documents' --view grid --display folder --no-restart
-dockutil --add '~/Downloads' --view grid --display folder
+dockutil --add '~/Documents' --view list --display folder --no-restart
+dockutil --add '~/Downloads' --view list --display folder
 
 # xcode command line tools
 xcode-select --install
@@ -113,8 +116,11 @@ echo "Updating RectanglePro config"
 
 echo "Updating macOS settings"
 
+# Change Arc icon
+defaults write company.thebrowser.Browser currentAppIconName flutedGlass
+
 # Disable annoying backswipe in Arc
-defaults write company.thebrowser.Browser AppleEnableMouseSwipeNavigateWithScrolls -bool false 
+defaults write company.thebrowser.Browser AppleEnableMouseSwipeNavigateWithScrolls -bool false
 defaults write company.thebrowser.Browser AppleEnableSwipeNavigateWithScrolls -bool false
 
 # Avoid the creation of .DS_Store files on network volumes or USB drives
@@ -129,7 +135,7 @@ defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool t
 # Dock tweaks
 defaults write com.apple.dock orientation -string left # Move dock to left side of screen
 defaults write com.apple.dock show-recents -bool FALSE # Disable "Show recent applications in dock"
-defaults write com.apple.Dock showhidden -bool TRUE # Show hidden applications as translucent
+defaults write com.apple.Dock showhidden -bool TRUE    # Show hidden applications as translucent
 killall Dock
 
 # Finder tweaks
@@ -147,7 +153,7 @@ open "/Applications/Karabiner-Elements.app"
 open "/Applications/Shottr.app"
 
 echo "Removing config programs"
-brew remove hpedrorodrigues/tools/dockutil
+brew remove dockutil
 
 # oh-my-zsh (must be last)
 sh -c "$(curl -# -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -159,10 +165,10 @@ echo "alias c='open \$1 -a \"Visual Studio Code\"'" >>~/.zshrc
 sed -i -e 's/plugins=(git)/plugins=(git ssh-agent)/' ~/.zshrc
 
 # fnm stuff
-echo "eval \"\$(fnm env --use-on-cd)\"">>~/.zshrc
+echo "eval \"\$(fnm env --use-on-cd)\"" >>~/.zshrc
 
-# fzf 
+# fzf
 source <(fzf --zsh)
 
-
+# finish
 source ~/.zshrc
