@@ -147,6 +147,11 @@ defaults write com.apple.finder ShowPathbar -bool true                     # Sho
 defaults write com.apple.finder ShowStatusBar -bool true                   # Show status bar
 killall Finder
 
+# Disable "the disk was not ejected properly" messages
+defaults write /Library/Preferences/SystemConfiguration/com.apple.DiskArbitration.diskarbitrationd.plist DADisableEjectNotification -bool YES
+killall diskarbitrationd
+
+
 echo "Starting services"
 open "/Applications/Rectangle Pro.app"
 open "/Applications/Karabiner-Elements.app"
